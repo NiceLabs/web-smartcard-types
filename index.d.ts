@@ -2,7 +2,7 @@
  * @see https://wicg.github.io/web-smart-card/#dom-smartcardreaderstatein
  */
 declare interface SmartCardReaderStateIn {
-  readonly readerName: string
+  readerName: string
   currentState: SmartCardReaderStateFlagsIn
   currentCount?: number
 }
@@ -28,37 +28,37 @@ declare interface SmartCardReaderStateFlagsIn {
  * @see https://wicg.github.io/web-smart-card/#dom-smartcardreaderstateout
  */
 declare interface SmartCardReaderStateOut {
-  readonly readerName: string
-  readonly eventState: SmartCardReaderStateFlagsOut
-  readonly eventCount: number
-  readonly answerToReset?: ArrayBuffer
+  readerName: string
+  eventState: SmartCardReaderStateFlagsOut
+  eventCount: number
+  answerToReset?: ArrayBuffer
 }
 
 /**
  * @see https://wicg.github.io/web-smart-card/#smartcardreaderstateflagsout-dictionary
  */
 declare interface SmartCardReaderStateFlagsOut {
-  readonly ignore?: boolean
-  readonly changed?: boolean
-  readonly unavailable?: boolean
-  readonly unknown?: boolean
-  readonly empty?: boolean
-  readonly present?: boolean
-  readonly exclusive?: boolean
-  readonly inuse?: boolean
-  readonly mute?: boolean
-  readonly unpowered?: boolean
+  ignore?: boolean
+  changed?: boolean
+  unavailable?: boolean
+  unknown?: boolean
+  empty?: boolean
+  present?: boolean
+  exclusive?: boolean
+  inuse?: boolean
+  mute?: boolean
+  unpowered?: boolean
 }
 
 /**
  * @see https://wicg.github.io/web-smart-card/#smartcardcontext-interface
  */
 declare class SmartCardContext {
-  listReaders(): Promise<readonly string[]>
+  listReaders(): Promise<string[]>
   getStatusChange(
-    readerStates: readonly SmartCardReaderStateIn[],
+    readerStates: SmartCardReaderStateIn[],
     options?: SmartCardGetStatusChangeOptions,
-  ): Promise<readonly SmartCardReaderStateOut[]>
+  ): Promise<SmartCardReaderStateOut[]>
   connect(
     readerName: string,
     accessMode: SmartCardAccessMode,
@@ -70,16 +70,16 @@ declare class SmartCardContext {
  * @see https://wicg.github.io/web-smart-card/#dom-smartcardgetstatuschangeoptions
  */
 declare interface SmartCardGetStatusChangeOptions {
-  readonly timeout?: DOMHighResTimeStamp
-  readonly signal?: AbortSignal
+  timeout?: DOMHighResTimeStamp
+  signal?: AbortSignal
 }
 
 /**
  * @see https://wicg.github.io/web-smart-card/#dom-smartcardconnectresult
  */
 declare interface SmartCardConnectResult {
-  readonly connection: SmartCardConnection
-  readonly activeProtocol?: SmartCardProtocol
+  connection: SmartCardConnection
+  activeProtocol?: SmartCardProtocol
 }
 
 /**
@@ -91,14 +91,14 @@ declare type SmartCardDisposition = 'leave' | 'reset' | 'unpower' | 'eject'
  * @see https://wicg.github.io/web-smart-card/#dom-smartcardtransactionoptions
  */
 declare interface SmartCardTransactionOptions {
-  readonly signal?: AbortSignal
+  signal?: AbortSignal
 }
 
 /**
  * @see https://wicg.github.io/web-smart-card/#dom-smartcardtransmitoptions
  */
 declare interface SmartCardTransmitOptions {
-  readonly protocol?: SmartCardProtocol
+  protocol?: SmartCardProtocol
 }
 
 /**
@@ -139,9 +139,9 @@ declare type SmartCardAccessMode = 'shared' | 'exclusive' | 'direct'
  * @see https://wicg.github.io/web-smart-card/#smartcardconnectionstatus-dictionary
  */
 declare interface SmartCardConnectionStatus {
-  readonly readerName: string
-  readonly state: SmartCardConnectionState
-  readonly answerToReset?: ArrayBuffer
+  readerName: string
+  state: SmartCardConnectionState
+  answerToReset?: ArrayBuffer
 }
 
 /**
@@ -161,7 +161,7 @@ declare type SmartCardConnectionState =
  * @see https://wicg.github.io/web-smart-card/#dom-smartcardconnectoptions
  */
 declare interface SmartCardConnectOptions {
-  readonly preferredProtocols: readonly SmartCardProtocol[]
+  preferredProtocols: SmartCardProtocol[]
 }
 
 /**
@@ -191,7 +191,7 @@ declare class SmartCardError extends DOMException {
  * @see https://wicg.github.io/web-smart-card/#smartcarderroroptions-dictionary
  */
 declare interface SmartCardErrorOptions {
-  readonly responseCode: SmartCardResponseCode
+  responseCode: SmartCardResponseCode
 }
 
 /**
