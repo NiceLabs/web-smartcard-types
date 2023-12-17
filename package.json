@@ -1,0 +1,25 @@
+{
+  "name": "@nicelabs/web-smartcard-types",
+  "version": "0.1.0",
+  "description": "Web SmartCard Typing",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NiceLabs/web-smartcard-types.git"
+  },
+  "license": "CC0-1.0",
+  "author": "septs <github@septs.p>",
+  "types": "index.d.ts",
+  "files": [
+    "index.d.ts",
+    "LICENSE.txt"
+  ],
+  "scripts": {
+    "dry-pack": "npm pack --dry-run",
+    "test": "tsc",
+    "format": "prettier -w **/*"
+  },
+  "devDependencies": {
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3"
+  }
+}
