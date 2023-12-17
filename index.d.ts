@@ -3,23 +3,23 @@
  */
 declare interface SmartCardReaderStateIn {
   readonly readerName: string
-  readonly currentState: SmartCardReaderStateFlagsIn
-  readonly currentCount?: number
+  currentState: SmartCardReaderStateFlagsIn
+  currentCount?: number
 }
 
 /**
  * @see https://wicg.github.io/web-smart-card/#smartcardreaderstateflagsin-dictionary
  */
 declare interface SmartCardReaderStateFlagsIn {
-  readonly unaware?: boolean
-  readonly ignore?: boolean
-  readonly unavailable?: boolean
-  readonly empty?: boolean
-  readonly present?: boolean
-  readonly exclusive?: boolean
-  readonly inuse?: boolean
-  readonly mute?: boolean
-  readonly unpowered?: boolean
+  unaware?: boolean
+  ignore?: boolean
+  unavailable?: boolean
+  empty?: boolean
+  present?: boolean
+  exclusive?: boolean
+  inuse?: boolean
+  mute?: boolean
+  unpowered?: boolean
 }
 
 /**
@@ -57,12 +57,12 @@ declare class SmartCardContext {
   listReaders(): Promise<readonly string[]>
   getStatusChange(
     readerStates: readonly SmartCardReaderStateIn[],
-    options?: SmartCardGetStatusChangeOptions
+    options?: SmartCardGetStatusChangeOptions,
   ): Promise<readonly SmartCardReaderStateOut[]>
   connect(
     readerName: string,
     accessMode: SmartCardAccessMode,
-    options?: SmartCardConnectOptions
+    options?: SmartCardConnectOptions,
   ): Promise<SmartCardConnectResult>
 }
 
@@ -219,12 +219,12 @@ declare interface Navigator {
   /**
    * @see https://wicg.github.io/web-smart-card/#extensions-to-the-navigator-interface
    */
-  smartCard: SmartCardResourceManager
+  readonly smartCard: SmartCardResourceManager
 }
 
 declare interface WorkerNavigator {
   /**
    * @see https://wicg.github.io/web-smart-card/#extensions-to-the-workernavigator-interface
    */
-  smartCard: SmartCardResourceManager
+  readonly smartCard: SmartCardResourceManager
 }
